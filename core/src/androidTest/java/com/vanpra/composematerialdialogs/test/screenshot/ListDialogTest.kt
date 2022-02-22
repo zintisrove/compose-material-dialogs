@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -66,7 +67,7 @@ class ListDialog : ScreenshotTest {
     fun simpleListSelectionDialog() {
         composeTestRule.setContentAndWaitForIdle {
             DialogWithContent {
-                title(res = R.string.backup_dialog_title)
+                title(text = stringResource(R.string.backup_dialog_title))
                 listItems(emails)
             }
         }
@@ -77,7 +78,7 @@ class ListDialog : ScreenshotTest {
     fun customListSelectionDialog() {
         composeTestRule.setContentAndWaitForIdle {
             DialogWithContent {
-                title(res = R.string.backup_dialog_title)
+                title(text = stringResource(R.string.backup_dialog_title))
                 listItems(
                     list = emails,
                     item = { _, email ->
@@ -111,7 +112,7 @@ class ListDialog : ScreenshotTest {
     fun multiSelectionDialog() {
         composeTestRule.setContentAndWaitForIdle {
             DialogWithContent(buttons = { defaultButtons() }) {
-                title(res = R.string.labels_dialog_title)
+                title(text = stringResource(R.string.labels_dialog_title))
                 listItemsMultiChoice(labels)
             }
         }
@@ -122,7 +123,7 @@ class ListDialog : ScreenshotTest {
     fun singleSelectionDialog() {
         composeTestRule.setContentAndWaitForIdle {
             DialogWithContent(buttons = { defaultButtons() }) {
-                title(res = R.string.ringtone_dialog_title)
+                title(text = stringResource(R.string.ringtone_dialog_title))
                 listItemsSingleChoice(ringtones)
             }
         }

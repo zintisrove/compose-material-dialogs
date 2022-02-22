@@ -5,6 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.karumi.shot.ScreenshotTest
@@ -29,8 +30,8 @@ class BasicDialogTest : ScreenshotTest {
     fun dialogWithoutButtons() {
         composeTestRule.setContentAndWaitForIdle {
             DialogWithContent {
-                title(res = R.string.location_dialog_title)
-                message(res = R.string.location_dialog_message)
+                title(text = stringResource(R.string.location_dialog_title))
+                message(text = stringResource(R.string.location_dialog_message))
             }
         }
         compareScreenshot(composeTestRule.onDialog())
@@ -45,8 +46,8 @@ class BasicDialogTest : ScreenshotTest {
                     positiveButton("Agree")
                 }
             ) {
-                title(res = R.string.location_dialog_title)
-                message(res = R.string.location_dialog_message)
+                title(text = stringResource(R.string.location_dialog_title))
+                message(text = stringResource(R.string.location_dialog_message))
             }
         }
         compareScreenshot(composeTestRule.onDialog())
@@ -71,7 +72,7 @@ class BasicDialogTest : ScreenshotTest {
                     },
                     textRes = R.string.location_dialog_title
                 )
-                message(res = R.string.location_dialog_message)
+                message(text = stringResource(R.string.location_dialog_message))
             }
         }
         compareScreenshot(composeTestRule.onDialog())
@@ -86,8 +87,8 @@ class BasicDialogTest : ScreenshotTest {
                     positiveButton("Turn On Speed Boost")
                 }
             ) {
-                title(res = R.string.location_dialog_title)
-                message(res = R.string.location_dialog_message)
+                title(text = stringResource(R.string.location_dialog_title))
+                message(text = stringResource(R.string.location_dialog_message))
             }
         }
         compareScreenshot(composeTestRule.onDialog())
@@ -102,7 +103,7 @@ class BasicDialogTest : ScreenshotTest {
                     positiveButton("Ok")
                 }
             ) {
-                title(res = R.string.input_dialog_title)
+                title(text = stringResource(R.string.input_dialog_title))
                 input(label = "Name", hint = "Jon Smith")
             }
         }

@@ -2,59 +2,64 @@ plugins {
     id("common-library")
 }
 
-android {
-    defaultConfig {
-        minSdk = 21
-        compileSdk = 31
-        targetSdk = 31
 
-        testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
-        testApplicationId = "com.vanpra.composematerialdialogs.color.test"
+kotlin {
+    android {
+        publishAllLibraryVariants()
+        compilations {
+            all {
+                kotlinOptions.jvmTarget = "1.8"
+            }
+        }
     }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                    getDefaultProguardFile("proguard-android.txt"),
-                    "proguard-rules.pro"
-            )
+    jvm {
+        compilations {
+            all {
+                kotlinOptions.jvmTarget = "11"
+            }
         }
     }
 
-    buildFeatures.compose = true
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                api(kotlin("stdlib-common"))
+                api(project(":core"))
+                compileOnly(compose.ui)
+                compileOnly(compose.foundation)
+                compileOnly(compose.material)
+                compileOnly(compose.materialIconsExtended)
+                compileOnly(compose.animation)
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+            }
+        }
+        val jvmMain by getting {
+            kotlin.srcDir("src/desktopMain/kotlin")
+            dependencies {
+                api(kotlin("stdlib-jdk8"))
+            }
+        }
+        val jvmTest by getting {
+            kotlin.srcDir("src/desktopTest/kotlin")
+        }
 
-    packagingOptions.excludes.addAll(
-        listOf(
-            "META-INF/DEPENDENCIES.txt",
-            "META-INF/LICENSE",
-            "META-INF/LICENSE.txt",
-            "META-INF/NOTICE",
-            "META-INF/NOTICE.txt",
-            "META-INF/AL2.0",
-            "META-INF/LGPL2.1"
-        )
-    )
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        val androidMain by getting {
+            kotlin.srcDir("src/jvmMain/kotlin")
+            dependencies {
+                api(kotlin("stdlib-jdk8"))
+            }
+        }
+        val androidTest by getting {
+            kotlin.srcDir("src/jvmTest/kotlin")
+        }
     }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.version
-    }
-}
-
-dependencies {
-    api(project(":core"))
-    implementation(Dependencies.AndroidX.coreKtx)
 }
 
 shot {
     tolerance = 1.0 // Tolerance needed for CI
-}
-
-mavenPublish {
-    sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
 }

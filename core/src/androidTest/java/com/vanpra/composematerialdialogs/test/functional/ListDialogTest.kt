@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.performClick
@@ -75,7 +76,7 @@ class ListDialog {
 
         composeTestRule.setContent {
             DialogWithContent(dialogState = dialogState) {
-                title(res = R.string.backup_dialog_title)
+                title(text = stringResource(R.string.backup_dialog_title))
                 listItems(emails) { index, item ->
                     selectedItem = Pair(index, item)
                 }
@@ -98,7 +99,7 @@ class ListDialog {
 
         composeTestRule.setContent {
             DialogWithContent(dialogState = dialogState) {
-                title(res = R.string.backup_dialog_title)
+                title(text = stringResource(R.string.backup_dialog_title))
                 listItems(
                     list = emails,
                     onClick = { index, item -> selectedItem = Pair(index, item) }
@@ -275,7 +276,7 @@ class ListDialog {
     ) {
         composeTestRule.setContent {
             DialogWithContent(dialogState = dialogState, buttons = { defaultButtons() }) {
-                title(res = R.string.labels_dialog_title)
+                title(text = stringResource(R.string.labels_dialog_title))
                 listItemsMultiChoice(labels, waitForPositiveButton = waitForPositiveButton) {
                     selectedItem.value = it
                 }
@@ -290,7 +291,7 @@ class ListDialog {
     ) {
         composeTestRule.setContent {
             DialogWithContent(dialogState = dialogState, buttons = { defaultButtons() }) {
-                title(res = R.string.ringtone_dialog_title)
+                title(text = stringResource(R.string.ringtone_dialog_title))
                 listItemsSingleChoice(ringtones, waitForPositiveButton = waitForPositiveButton) {
                     selectedItem.value = it
                 }

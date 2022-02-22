@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vanpra.composematerialdialogdemos.DialogAndShowButton
 import com.vanpra.composematerialdialogdemos.R
@@ -66,12 +67,12 @@ private fun MaterialDialogButtons.defaultListDialogButtons() {
 @Composable
 fun BasicListDialogDemo() {
     DialogAndShowButton(buttonText = "Simple List Dialog") {
-        title(res = R.string.backup_dialog_title)
+        title(text = stringResource(R.string.backup_dialog_title))
         listItems(emails)
     }
 
     DialogAndShowButton(buttonText = "Custom List Dialog") {
-        title(res = R.string.backup_dialog_title)
+        title(text = stringResource(R.string.backup_dialog_title))
         listItems(
             modifier = Modifier.padding(bottom = 8.dp).padding(horizontal = 24.dp),
             list = emails,
@@ -111,7 +112,7 @@ fun MultiSelectionDemo() {
         buttonText = "Multi-Selection Dialog",
         buttons = { defaultListDialogButtons() }
     ) {
-        title(res = R.string.labels_dialog_title)
+        title(text = stringResource(R.string.labels_dialog_title))
         listItemsMultiChoice(labels) {
             println(it)
         }
@@ -123,7 +124,7 @@ fun MultiSelectionDemo() {
     ) {
         val disabledLabels = setOf(1, 3, 4)
 
-        title(res = R.string.labels_dialog_title)
+        title(text = stringResource(R.string.labels_dialog_title))
         listItemsMultiChoice(labels, disabledIndices = disabledLabels) {
             println(it)
         }
@@ -133,7 +134,7 @@ fun MultiSelectionDemo() {
         buttonText = "Multi-Selection Dialog with initial selection",
         buttons = { defaultListDialogButtons() }
     ) {
-        title(res = R.string.labels_dialog_title)
+        title(text = stringResource(R.string.labels_dialog_title))
         listItemsMultiChoice(
             labels,
             initialSelection = initialSelection,
@@ -155,7 +156,7 @@ fun SingleSelectionDemo() {
         buttonText = "Single Selection Dialog",
         buttons = { defaultListDialogButtons() }
     ) {
-        title(res = R.string.ringtone_dialog_title)
+        title(text = stringResource(R.string.ringtone_dialog_title))
         listItemsSingleChoice(ringtones) {
             println(it)
         }
@@ -167,7 +168,7 @@ fun SingleSelectionDemo() {
     ) {
         val disabledRingtones = setOf(2, 4, 5)
 
-        title(res = R.string.ringtone_dialog_title)
+        title(text = stringResource(R.string.ringtone_dialog_title))
         listItemsSingleChoice(ringtones, disabledIndices = disabledRingtones) {
             println(it)
         }
@@ -177,7 +178,7 @@ fun SingleSelectionDemo() {
         buttonText = "Single Selection Dialog with initial selection",
         buttons = { defaultListDialogButtons() }
     ) {
-        title(res = R.string.ringtone_dialog_title)
+        title(text = stringResource(R.string.ringtone_dialog_title))
         listItemsSingleChoice(
             ringtones,
             initialSelection = initialSingleSelection

@@ -14,12 +14,13 @@ object Dependencies {
     }
 
     object Accompanist {
-        private const val version = "0.22.0-rc"
-        const val pager = "com.google.accompanist:accompanist-pager:$version"
+        private const val version = "0.20.1"
+        const val pager = "ca.gosyer:accompanist-pager:$version"
+        const val pagerJvm = "ca.gosyer:accompanist-pager-jvm:$version"
     }
 
     object Kotlin {
-        private const val version = "1.6.0"
+        private const val version = "1.6.10"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
     }
 
@@ -44,7 +45,7 @@ object Dependencies {
         }
 
         object Compose {
-            const val version = "1.1.0-rc01"
+            const val version = "1.1.0"
 
             const val ui = "androidx.compose.ui:ui:$version"
             const val material = "androidx.compose.material:material:$version"

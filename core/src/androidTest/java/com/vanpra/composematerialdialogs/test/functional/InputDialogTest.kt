@@ -3,6 +3,7 @@ package com.vanpra.composematerialdialogs.test.functional
 import android.util.Patterns
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -183,7 +184,7 @@ class InputDialogTest {
             val dialogState = rememberMaterialDialogState(true)
 
             DialogWithContent(dialogState = dialogState, buttons = { defaultButtons() }) {
-                title(res = R.string.input_dialog_title)
+                title(text = stringResource(R.string.input_dialog_title))
                 testInputDialog()
             }
         }

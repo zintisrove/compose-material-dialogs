@@ -4,15 +4,6 @@ plugins {
 }
 
 android {
-    defaultConfig {
-        minSdk = 21
-        compileSdk = 31
-        targetSdk = 30
-
-        testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
-        testApplicationId = "com.vanpra.composematerialdialogs.test"
-    }
-
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -36,11 +27,6 @@ android {
     buildFeatures {
         buildConfig = false
         compose = true
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     composeOptions {

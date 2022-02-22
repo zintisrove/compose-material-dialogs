@@ -2,61 +2,65 @@ plugins {
     id("common-library")
 }
 
-android {
-    defaultConfig {
-        minSdk = 21
-        compileSdk = 31
-        targetSdk = 31
 
-        testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
-        testApplicationId = "com.vanpra.composematerialdialogs.test"
+kotlin {
+    android {
+        publishAllLibraryVariants()
+        compilations {
+            all {
+                kotlinOptions.jvmTarget = "1.8"
+            }
+        }
     }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                    getDefaultProguardFile("proguard-android.txt"),
-                    "proguard-rules.pro"
-            )
+    jvm {
+        compilations {
+            all {
+                kotlinOptions.jvmTarget = "11"
+            }
         }
     }
 
-    packagingOptions.excludes.addAll(
-        listOf(
-            "META-INF/DEPENDENCIES.txt",
-            "META-INF/LICENSE",
-            "META-INF/LICENSE.txt",
-            "META-INF/NOTICE",
-            "META-INF/NOTICE.txt",
-            "META-INF/AL2.0",
-            "META-INF/LGPL2.1"
-        )
-    )
+    sourceSets {
+        all {
+            languageSettings {
+                optIn("kotlin.RequiresOptIn")
+            }
+        }
+        val commonMain by getting {
+            dependencies {
+                api(kotlin("stdlib-common"))
+                compileOnly(compose.ui)
+                compileOnly(compose.foundation)
+                compileOnly(compose.material)
+                compileOnly(compose.materialIconsExtended)
+                compileOnly(compose.animation)
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+            }
+        }
+        val jvmMain by getting {
+            kotlin.srcDir("src/desktopMain/kotlin")
+            dependencies {
+                api(kotlin("stdlib-jdk8"))
+            }
+        }
+        val jvmTest by getting {
+            kotlin.srcDir("src/desktopTest/kotlin")
+        }
 
-    buildFeatures {
-        buildConfig = false
-        compose = true
+        val androidMain by getting {
+            kotlin.srcDir("src/jvmMain/kotlin")
+            dependencies {
+                api(kotlin("stdlib-jdk8"))
+            }
+        }
+        val androidTest by getting {
+            kotlin.srcDir("src/jvmTest/kotlin")
+        }
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.version
-    }
 }
 
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-}
-
-shot {
-    tolerance = 1.0 // Tolerance needed for CI
-}
-
-mavenPublish {
-    sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
-}

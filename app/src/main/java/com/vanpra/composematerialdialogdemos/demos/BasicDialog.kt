@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import com.vanpra.composematerialdialogdemos.DialogAndShowButton
 import com.vanpra.composematerialdialogdemos.R
@@ -26,8 +27,8 @@ import com.vanpra.composematerialdialogs.title
 @Composable
 fun BasicDialogDemo() {
     DialogAndShowButton(buttonText = "Basic Dialog") {
-        title(res = R.string.location_dialog_title)
-        message(res = R.string.location_dialog_message)
+        title(text = stringResource( R.string.location_dialog_title))
+        message(text = stringResource(R.string.location_dialog_message))
     }
 
     DialogAndShowButton(
@@ -37,8 +38,8 @@ fun BasicDialogDemo() {
             positiveButton("Agree")
         }
     ) {
-        title(res = R.string.location_dialog_title)
-        message(res = R.string.location_dialog_message)
+        title(text = stringResource(R.string.location_dialog_title))
+        message(text = stringResource(R.string.location_dialog_message))
     }
 
     DialogAndShowButton(
@@ -56,9 +57,9 @@ fun BasicDialogDemo() {
                     colorFilter = ColorFilter.tint(MaterialTheme.colors.onBackground)
                 )
             },
-            textRes = R.string.location_dialog_title
+            text = stringResource(R.string.location_dialog_title)
         )
-        message(res = R.string.location_dialog_message)
+        message(text = stringResource(R.string.location_dialog_message))
     }
 
     DialogAndShowButton(
@@ -68,8 +69,8 @@ fun BasicDialogDemo() {
             positiveButton("Turn On Speed Boost")
         }
     ) {
-        title(res = R.string.location_dialog_title)
-        message(res = R.string.location_dialog_message)
+        title(text = stringResource(R.string.location_dialog_title))
+        message(text = stringResource(R.string.location_dialog_message))
     }
 
     DialogAndShowButton(
@@ -79,7 +80,7 @@ fun BasicDialogDemo() {
             positiveButton("Ok")
         }
     ) {
-        title(res = R.string.input_dialog_title)
+        title(text = stringResource(R.string.input_dialog_title))
         input(label = "Name", hint = "Jon Smith") {
             Log.d("SELECTION:", it)
         }
@@ -93,7 +94,7 @@ fun BasicDialogDemo() {
         }
     ) {
         val focusRequester = remember { FocusRequester() }
-        title(res = R.string.input_dialog_title)
+        title(text = stringResource(R.string.input_dialog_title))
         input(
             label = "Name",
             hint = "Jon Smith",
@@ -111,7 +112,7 @@ fun BasicDialogDemo() {
             positiveButton("Ok")
         }
     ) {
-        title(res = R.string.input_dialog_title)
+        title(text = stringResource(R.string.input_dialog_title))
         input(
             label = "Name", hint = "Jon Smith",
             keyboardActions = KeyboardActions(

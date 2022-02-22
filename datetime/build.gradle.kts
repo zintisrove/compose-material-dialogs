@@ -2,69 +2,77 @@ plugins {
     id("common-library")
 }
 
+kotlin {
+    android {
+        publishAllLibraryVariants()
+        compilations {
+            all {
+                kotlinOptions.jvmTarget = "1.8"
+            }
+        }
+    }
+    jvm {
+        compilations {
+            all {
+                kotlinOptions.jvmTarget = "11"
+            }
+        }
+    }
+
+    sourceSets {
+        all {
+            languageSettings {
+                optIn("kotlin.RequiresOptIn")
+            }
+        }
+        val commonMain by getting {
+            dependencies {
+                api(kotlin("stdlib-common"))
+                api(project(":core"))
+                api(compose.ui)
+                api(compose.foundation)
+                api(compose.material)
+                api(compose.materialIconsExtended)
+                api(compose.animation)
+
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+            }
+        }
+        val jvmMain by getting {
+            kotlin.srcDir("src/desktopMain/kotlin")
+            dependencies {
+                api(kotlin("stdlib-jdk8"))
+                implementation(Dependencies.Accompanist.pagerJvm)
+            }
+        }
+        val jvmTest by getting {
+            kotlin.srcDir("src/desktopTest/kotlin")
+        }
+
+        val androidMain by getting {
+            kotlin.srcDir("src/jvmMain/kotlin")
+            dependencies {
+                api(kotlin("stdlib-jdk8"))
+                implementation(Dependencies.Accompanist.pager)
+            }
+        }
+        val androidTest by getting {
+            kotlin.srcDir("src/jvmTest/kotlin")
+        }
+    }
+}
+
 android {
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
     }
-    defaultConfig {
-        minSdk = 21
-        compileSdk = 31
-        targetSdk = 31
 
-        testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
-        testApplicationId = "com.vanpra.composematerialdialogs.test"
+    dependencies {
+        add("coreLibraryDesugaring", Dependencies.desugar)
     }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(
-                    getDefaultProguardFile("proguard-android.txt"),
-                    "proguard-rules.pro"
-            )
-        }
-    }
-
-    buildFeatures.compose = true
-
-    packagingOptions.excludes.addAll(
-        listOf(
-            "META-INF/DEPENDENCIES.txt",
-            "META-INF/LICENSE",
-            "META-INF/LICENSE.txt",
-            "META-INF/NOTICE",
-            "META-INF/NOTICE.txt",
-            "META-INF/AL2.0",
-            "META-INF/LGPL2.1"
-        )
-    )
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.version
-    }
-
-    kotlinOptions {
-        freeCompilerArgs = freeCompilerArgs + listOf(
-            "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi"
-        )
-    }
-}
-
-dependencies {
-    api(project(":core"))
-    implementation(Dependencies.Accompanist.pager)
-    coreLibraryDesugaring(Dependencies.desugar)
-}
-
-shot {
-    tolerance = 1.0 // Tolerance needed for CI
-}
-
-mavenPublish {
-    sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
 }

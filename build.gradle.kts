@@ -1,8 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    id("org.jetbrains.compose") version "1.0.1" apply false
     id("com.diffplug.spotless") version "6.0.4"
-    id("org.jetbrains.dokka") version "1.6.0"
+    id("org.jetbrains.dokka") version "1.6.10"
 }
 
 buildscript {
@@ -14,9 +15,9 @@ buildscript {
 
     dependencies {
         classpath(Dependencies.Kotlin.gradlePlugin)
-        classpath("com.android.tools.build:gradle:7.2.0-alpha07")
+        classpath("com.android.tools.build:gradle:7.0.4")
         classpath("com.vanniktech:gradle-maven-publish-plugin:0.18.0")
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.0")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:1.6.10")
         classpath(Dependencies.Shot.core)
     }
 }
@@ -26,20 +27,6 @@ allprojects {
         google()
         mavenCentral()
         gradlePluginPortal()
-    }
-
-    tasks.withType<KotlinCompile>().all {
-        kotlinOptions {
-            jvmTarget = "1.8"
-            freeCompilerArgs = freeCompilerArgs + listOf(
-                "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi",
-                "-Xopt-in=androidx.compose.animation.ExperimentalAnimationApi",
-                "-Xopt-in=androidx.compose.ui.test.ExperimentalTestApi",
-                "-Xopt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-                "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi",
-                "-Xopt-in=com.google.accompanist.pager.ExperimentalPagerApi"
-            )
-        }
     }
 }
 
@@ -59,6 +46,37 @@ subprojects {
     tasks.withType<Test> {
         testLogging {
             showStandardStreams = true
+        }
+    }
+
+    plugins.withType<com.android.build.gradle.BasePlugin> {
+        configure<com.android.build.gradle.BaseExtension> {
+            compileSdkVersion(31)
+            defaultConfig {
+                minSdk = 21
+                targetSdk = 31
+
+                testInstrumentationRunner = "com.karumi.shot.ShotTestRunner"
+                testApplicationId = "com.vanpra.composematerialdialogs.test"
+            }
+            compileOptions {
+                sourceCompatibility(JavaVersion.VERSION_1_8)
+                targetCompatibility(JavaVersion.VERSION_1_8)
+            }
+            sourceSets {
+                named("main") {
+                    val altManifest = file("src/androidMain/AndroidManifest.xml")
+                    if (altManifest.exists()) {
+                        manifest.srcFile(altManifest.path)
+                    }
+                }
+            }
+        }
+    }
+
+    plugins.withType<com.karumi.shot.ShotPlugin> {
+        configure<com.karumi.shot.ShotExtension> {
+            tolerance = 1.0
         }
     }
 }
