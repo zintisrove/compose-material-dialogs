@@ -12,3 +12,7 @@ local.properties
 secret.properties
 debug.keystore
 /docs/api
+
+# Do not commit plain-text signing info
+release/*.properties
+release/*.gpg

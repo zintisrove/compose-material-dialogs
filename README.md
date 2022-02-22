@@ -1,10 +1,10 @@
 # Compose Material Dialogs
 
-:rocket:  Easy to use library to help you build complex dialogs using Jetpack Compose :rocket:
+:rocket:  Easy to use library to help you build complex dialogs using Compose Multiplatform :rocket:
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ae8d455118164f43a24732761a970cc8)](https://www.codacy.com/gh/vanpra/compose-material-dialogs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vanpra/compose-material-dialogs&amp;utm_campaign=Badge_Grade)![Build & Test](https://github.com/vanpra/compose-material-dialogs/actions/workflows/main.yml/badge.svg)
 
-**Current Library Compose Version: 1.1.0-rc01**
+**Current Library Compose Multiplatform Version: 1.0.1**
 
 ### [See Releases and Changelog](https://github.com/vanpra/compose-material-dialogs/blob/main/CHANGELOG.md)
 
@@ -14,12 +14,12 @@
 
 ![](https://raw.githubusercontent.com/vanpra/compose-material-dialogs/main/imgs/full_core.png)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/core)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/core)
 
 ```gradle
 dependencies {
   ...
-  implementation "io.github.vanpra.compose-material-dialogs:core:0.6.3" 
+  implementation "ca.gosyer:compose-material-dialogs-core:0.6.3" 
   ...
 }
 ```
@@ -30,12 +30,12 @@ dependencies {
 
 ![](https://raw.githubusercontent.com/vanpra/compose-material-dialogs/main/imgs/date_and_time.png)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/datetime/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/datetime)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-datetime/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/datetime)
 
 ```gradle
 dependencies {
   ...
-  implementation "io.github.vanpra.compose-material-dialogs:datetime:0.6.3"
+  implementation "ca.gosyer:compose-material-dialogs-datetime:0.6.3"
   ...
 }
 ```
@@ -46,12 +46,12 @@ dependencies {
 
 ![](https://raw.githubusercontent.com/vanpra/compose-material-dialogs/main/imgs/color_picker.png)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/color/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/color)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-color/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/color)
 
 ```gradle
 dependencies {
   ...
-  implementation "io.github.vanpra.compose-material-dialogs:color:0.6.3"
+  implementation "ca.gosyer:compose-material-dialogs-color:0.6.3"
   ...
 }
 ```
