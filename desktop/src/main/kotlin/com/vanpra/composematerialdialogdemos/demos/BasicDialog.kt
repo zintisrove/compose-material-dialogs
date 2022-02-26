@@ -1,8 +1,7 @@
 package com.vanpra.composematerialdialogdemos.demos
 
-import android.util.Log
-import android.util.Patterns
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -12,23 +11,34 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
+import cafe.adriel.voyager.core.screen.uniqueScreenKey
 import com.vanpra.composematerialdialogdemos.DialogAndShowButton
-import com.vanpra.composematerialdialogdemos.R
+import com.vanpra.composematerialdialogdemos.Strings
 import com.vanpra.composematerialdialogs.iconTitle
 import com.vanpra.composematerialdialogs.input
 import com.vanpra.composematerialdialogs.message
 import com.vanpra.composematerialdialogs.title
 
+class BasicDialogDemo : Screen {
+    override val key: ScreenKey = uniqueScreenKey
+    @Composable
+    override fun Content() {
+        Column {
+            BasicDialogDemoContent()
+        }
+    }
+}
 /**
  * @brief Basic Dialog Demos
  */
 @Composable
-fun BasicDialogDemo() {
+private fun BasicDialogDemoContent() {
     DialogAndShowButton(buttonText = "Basic Dialog") {
-        title(text = stringResource(R.string.location_dialog_title))
-        message(text = stringResource(R.string.location_dialog_message))
+        title(text = Strings.location_dialog_title)
+        message(text = Strings.location_dialog_message)
     }
 
     DialogAndShowButton(
@@ -38,8 +48,8 @@ fun BasicDialogDemo() {
             positiveButton("Agree")
         }
     ) {
-        title(text = stringResource(R.string.location_dialog_title))
-        message(text = stringResource(R.string.location_dialog_message))
+        title(text = Strings.location_dialog_title)
+        message(text = Strings.location_dialog_message)
     }
 
     DialogAndShowButton(
@@ -57,9 +67,9 @@ fun BasicDialogDemo() {
                     colorFilter = ColorFilter.tint(MaterialTheme.colors.onBackground)
                 )
             },
-            text = stringResource(R.string.location_dialog_title)
+            text = Strings.location_dialog_title
         )
-        message(text = stringResource(R.string.location_dialog_message))
+        message(text = Strings.location_dialog_message)
     }
 
     DialogAndShowButton(
@@ -69,8 +79,8 @@ fun BasicDialogDemo() {
             positiveButton("Turn On Speed Boost")
         }
     ) {
-        title(text = stringResource(R.string.location_dialog_title))
-        message(text = stringResource(R.string.location_dialog_message))
+        title(text = Strings.location_dialog_title)
+        message(text = Strings.location_dialog_message)
     }
 
     DialogAndShowButton(
@@ -80,9 +90,9 @@ fun BasicDialogDemo() {
             positiveButton("Ok")
         }
     ) {
-        title(text = stringResource(R.string.input_dialog_title))
+        title(text = Strings.input_dialog_title)
         input(label = "Name", hint = "Jon Smith") {
-            Log.d("SELECTION:", it)
+            println("SELECTION:$it")
         }
     }
 
@@ -94,14 +104,14 @@ fun BasicDialogDemo() {
         }
     ) {
         val focusRequester = remember { FocusRequester() }
-        title(text = stringResource(R.string.input_dialog_title))
+        title(text = Strings.input_dialog_title)
         input(
             label = "Name",
             hint = "Jon Smith",
             focusRequester = focusRequester,
             focusOnShow = true
         ) {
-            Log.d("SELECTION:", it)
+            println("SELECTION:$it")
         }
     }
 
@@ -112,7 +122,7 @@ fun BasicDialogDemo() {
             positiveButton("Ok")
         }
     ) {
-        title(text = stringResource(R.string.input_dialog_title))
+        title(text = Strings.input_dialog_title)
         input(
             label = "Name", hint = "Jon Smith",
             keyboardActions = KeyboardActions(
@@ -120,7 +130,7 @@ fun BasicDialogDemo() {
             ),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
         ) {
-            Log.d("SELECTION:", it)
+            println("SELECTION:$it")
         }
     }
 
@@ -137,10 +147,10 @@ fun BasicDialogDemo() {
             hint = "hello@example.com",
             errorMessage = "Invalid email",
             isTextValid = {
-                Patterns.EMAIL_ADDRESS.matcher(it).matches() && it.isNotEmpty()
+                it.contains('@')
             }
         ) {
-            Log.d("SELECTION:", it)
+            println("SELECTION:$it")
         }
     }
 }

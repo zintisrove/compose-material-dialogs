@@ -217,7 +217,7 @@ fun MaterialDialog(
     dialogState: MaterialDialogState = rememberMaterialDialogState(),
     properties: MaterialDialogProperties = MaterialDialogProperties(),
     backgroundColor: Color = MaterialTheme.colors.surface,
-    shape: Shape = MaterialTheme.shapes.medium,
+    shape: Shape = defaultDialogShape(),
     border: BorderStroke? = null,
     elevation: Dp = 24.dp,
     autoDismiss: Boolean = true,
@@ -228,39 +228,33 @@ fun MaterialDialog(
     val dialogScope = remember { MaterialDialogScopeImpl(dialogState, autoDismiss) }
     DisposableEffect(dialogState.showing) {
         if (!dialogState.showing) dialogScope.reset()
-        onDispose { }
+        onDispose {}
     }
 
-    val configuration = rememberScreenConfiguration()
+    if (dialogState.showing) {
+        dialogState.dialogBackgroundColor = LocalElevationOverlay.current?.apply(
+            color = backgroundColor,
+            elevation = elevation
+        ) ?: MaterialTheme.colors.surface
 
-    BoxWithConstraints {
-        val maxHeight = if (isLargeDevice()) {
-            configuration.screenHeightDp.dp - 96.dp
-        } else {
-            560.dp
-        }
-
-        val maxHeightPx = with(LocalDensity.current) { maxHeight.toPx().toInt() }
-        val isDialogFullWidth = configuration.screenWidthDp.dp == maxWidth
-        val padding = if (isDialogFullWidth) 16.dp else 0.dp
-
-        if (dialogState.showing) {
-            dialogState.dialogBackgroundColor = LocalElevationOverlay.current?.apply(
-                color = backgroundColor,
-                elevation = elevation
-            ) ?: MaterialTheme.colors.surface
-
+        BoxWithConstraints {
             DialogBox(
                 properties = properties,
                 onDismissRequest = { onCloseRequest(dialogState) }
             ) {
+                val configuration = rememberScreenConfiguration()
+
+                val maxHeight = configuration.getMaxHeight()
+
+                val maxHeightPx = with(LocalDensity.current) { maxHeight.toPx().toInt() }
+                val padding = configuration.getPadding(maxWidth)
                 Surface(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .sizeIn(maxHeight = maxHeight, maxWidth = 560.dp)
+                        .dialogMaxSize(maxHeight = maxHeight)
                         .padding(horizontal = padding)
                         .clipToBounds()
-                        .wrapContentHeight()
+                        .dialogHeight()
                         .testTag("dialog"),
                     shape = shape,
                     color = backgroundColor,
@@ -289,8 +283,7 @@ fun MaterialDialog(
                             )
                         )
 
-                        val height =
-                            min(maxHeightPx, buttonsPlaceable.height + contentPlaceable.height)
+                        val height = getLayoutHeight(maxHeightPx, buttonsPlaceable.height + contentPlaceable.height)
 
                         return@Layout layout(constraints.maxWidth, height) {
                             contentPlaceable.place(0, 0)

@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.6.4 - 2021-02-26
+
+- Add support for setting an icon and a title for desktop dialogs
+- Fix background, button placing, and many more on desktop
+
 ### 0.6.3 - 2021-01-21
 
 -  Update compose to 1.1.0-rc01 

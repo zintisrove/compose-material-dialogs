@@ -1,12 +1,21 @@
 package com.vanpra.composematerialdialogs
 
+import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.SecureFlagPolicy
+import kotlin.math.min
 
 @Composable
 internal actual fun rememberScreenConfiguration(): ScreenConfiguration {
@@ -52,4 +61,30 @@ private fun SecurePolicy.toSecureFlagPolicy(): SecureFlagPolicy {
         SecurePolicy.SecureOn -> SecureFlagPolicy.SecureOn
         SecurePolicy.SecureOff -> SecureFlagPolicy.SecureOff
     }
+}
+
+@Composable
+internal actual fun defaultDialogShape(): Shape = MaterialTheme.shapes.medium
+
+@Composable
+internal actual fun ScreenConfiguration.getMaxHeight(): Dp {
+    return if (isLargeDevice()) {
+        screenHeightDp.dp - 96.dp
+    } else {
+        560.dp
+    }
+}
+
+@Composable
+internal actual fun ScreenConfiguration.getPadding(maxWidth: Dp): Dp {
+    val isDialogFullWidth = screenWidthDp.dp == maxWidth
+    return if (isDialogFullWidth) 16.dp else 0.dp
+}
+
+internal actual fun Modifier.dialogHeight(): Modifier = Modifier.wrapContentHeight()
+
+internal actual fun Modifier.dialogMaxSize(maxHeight: Dp): Modifier = sizeIn(maxHeight = maxHeight, maxWidth = 560.dp)
+
+internal actual fun getLayoutHeight(maxHeightPx: Int, layoutHeight: Int): Int {
+    return min(maxHeightPx, layoutHeight)
 }

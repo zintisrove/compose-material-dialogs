@@ -3,6 +3,9 @@ package com.vanpra.composematerialdialogs
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
@@ -74,11 +77,29 @@ sealed class DesktopWindowPosition {
     }
 }
 
-class MaterialDialogProperties(
+@Stable
+data class MaterialDialogProperties(
     val dismissOnBackPress: Boolean = true,
     val dismissOnClickOutside: Boolean = true,
     val securePolicy: SecurePolicy = SecurePolicy.Inherit,
     val usePlatformDefaultWidth : Boolean = false,
     val position: DesktopWindowPosition = DesktopWindowPosition(Alignment.Center),
-    val size: DpSize = DpSize(400.dp, 300.dp)
+    val size: DpSize = DpSize(400.dp, 300.dp),
+    val title: String = "Untitled",
+    val icon: Painter? = null,
+    val resizable: Boolean = true
 )
+
+internal expect fun defaultDialogShape(): Shape
+
+@Composable
+internal expect fun ScreenConfiguration.getMaxHeight(): Dp
+
+@Composable
+internal expect fun ScreenConfiguration.getPadding(maxWidth: Dp): Dp
+
+internal expect fun Modifier.dialogHeight(): Modifier
+
+internal expect fun Modifier.dialogMaxSize(maxHeight: Dp): Modifier
+
+internal expect fun getLayoutHeight(maxHeightPx: Int, layoutHeight: Int): Int
