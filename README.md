@@ -19,7 +19,7 @@
 ```gradle
 dependencies {
   ...
-  implementation "ca.gosyer:compose-material-dialogs-core:0.6.3" 
+  implementation "ca.gosyer:compose-material-dialogs-core:0.6.4" 
   ...
 }
 ```
@@ -35,7 +35,7 @@ dependencies {
 ```gradle
 dependencies {
   ...
-  implementation "ca.gosyer:compose-material-dialogs-datetime:0.6.3"
+  implementation "ca.gosyer:compose-material-dialogs-datetime:0.6.4"
   ...
 }
 ```
@@ -51,7 +51,7 @@ dependencies {
 ```gradle
 dependencies {
   ...
-  implementation "ca.gosyer:compose-material-dialogs-color:0.6.3"
+  implementation "ca.gosyer:compose-material-dialogs-color:0.6.4"
   ...
 }
 ```
