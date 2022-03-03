@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.sizeIn
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.LocalElevationOverlay
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -31,8 +29,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import java.util.concurrent.atomic.AtomicInteger
-import kotlin.math.min
 
 /**
  *  Interface defining values and functions which are available to any code
@@ -83,10 +79,10 @@ internal class MaterialDialogScopeImpl(
     override val dialogButtons = MaterialDialogButtons(this)
 
     override val callbacks = mutableStateMapOf<Int, () -> Unit>()
-    private val callbackCounter = AtomicInteger(0)
+    private val callbackCounter = AtomicInt(0)
 
     override val positiveButtonEnabled = mutableStateMapOf<Int, Boolean>()
-    private val positiveEnabledCounter = AtomicInteger(0)
+    private val positiveEnabledCounter = AtomicInt(0)
 
     /**
      * Hides the dialog and calls any callbacks from components in the dialog

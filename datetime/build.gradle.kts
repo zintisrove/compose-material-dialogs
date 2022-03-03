@@ -34,7 +34,7 @@ kotlin {
                 api(compose.material)
                 api(compose.materialIconsExtended)
                 api(compose.animation)
-
+                implementation(Dependencies.Accompanist.pager)
             }
         }
         val commonTest by getting {
@@ -47,7 +47,6 @@ kotlin {
             kotlin.srcDir("src/desktopMain/kotlin")
             dependencies {
                 api(kotlin("stdlib-jdk8"))
-                implementation(Dependencies.Accompanist.pagerJvm)
             }
         }
         val jvmTest by getting {
@@ -58,7 +57,6 @@ kotlin {
             kotlin.srcDir("src/jvmMain/kotlin")
             dependencies {
                 api(kotlin("stdlib-jdk8"))
-                implementation(Dependencies.Accompanist.pager)
             }
         }
         val androidTest by getting {

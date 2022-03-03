@@ -2,21 +2,15 @@ package com.vanpra.composematerialdialogs
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogState
-import androidx.compose.ui.window.DialogWindowScope
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.rememberDialogState
 
@@ -69,7 +63,7 @@ internal actual fun DialogBox(
 
 private fun DesktopWindowPosition.toWindowPosition(): WindowPosition {
     return when (this) {
-        is DesktopWindowPosition.PlatformDefault -> WindowPosition.PlatformDefault
+        DesktopWindowPosition.PlatformDefault -> WindowPosition.PlatformDefault
         is DesktopWindowPosition.Absolute -> WindowPosition(x = x, y = y)
         is DesktopWindowPosition.Aligned -> WindowPosition(alignment)
     }

@@ -4,6 +4,7 @@
 
 - Use CommonMain for every module except DateTime, waiting on LocalTime in Kotlinx-datetime
 - Update to Compose Multiplatform 1.1.0
+- Update Accompanist
 
 ### 0.6.5 - 2021-03-03
 
