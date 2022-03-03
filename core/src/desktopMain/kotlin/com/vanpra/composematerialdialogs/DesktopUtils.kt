@@ -88,7 +88,7 @@ internal actual fun ScreenConfiguration.getPadding(maxWidth: Dp): Dp {
     return 0.dp
 }
 
-internal actual fun Modifier.dialogHeight(): Modifier = Modifier.fillMaxHeight()
+internal actual fun Modifier.dialogHeight(): Modifier = fillMaxHeight()
 
 internal actual fun Modifier.dialogMaxSize(maxHeight: Dp): Modifier = this
 

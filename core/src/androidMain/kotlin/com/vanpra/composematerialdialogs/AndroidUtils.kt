@@ -1,5 +1,6 @@
 package com.vanpra.composematerialdialogs
 
+import android.util.Log
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.MaterialTheme
@@ -77,11 +78,11 @@ internal actual fun ScreenConfiguration.getMaxHeight(): Dp {
 
 @Composable
 internal actual fun ScreenConfiguration.getPadding(maxWidth: Dp): Dp {
-    val isDialogFullWidth = screenWidthDp.dp == maxWidth
+    val isDialogFullWidth = screenWidthDp.toInt() == maxWidth.value.toInt()
     return if (isDialogFullWidth) 16.dp else 0.dp
 }
 
-internal actual fun Modifier.dialogHeight(): Modifier = Modifier.wrapContentHeight()
+internal actual fun Modifier.dialogHeight(): Modifier = wrapContentHeight()
 
 internal actual fun Modifier.dialogMaxSize(maxHeight: Dp): Modifier = sizeIn(maxHeight = maxHeight, maxWidth = 560.dp)
 
