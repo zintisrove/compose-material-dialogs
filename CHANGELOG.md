@@ -1,5 +1,9 @@
 # Changelog
 
+### 0.6.5 - 2021-02-26
+
+- Fix multiple issues with the dialog modifiers, mainly width padding on Android
+
 ### 0.6.4 - 2021-02-26
 
 - Add support for setting an icon and a title for desktop dialogs
