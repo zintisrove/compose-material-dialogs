@@ -58,7 +58,6 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vanpra.composematerialdialogs.MaterialDialogScope
-import java.util.Locale
 
 private val itemSizeDp = 55.dp
 private val tickSize = 35.dp
@@ -238,8 +237,7 @@ private fun CustomARGB(selectedColor: MutableState<Color>, showAlphaSelector: Bo
                 })
 
                 val hexString = remember(selectedColor.value) {
-                    val rawHex = Integer.toHexString(selectedColor.value.toArgb())
-                        .uppercase(Locale.ROOT)
+                    val rawHex = selectedColor.value.toArgb().toHexString()
                         .padStart(8, '0')
 
                     if (!showAlphaSelector) rawHex.substring(2) else rawHex

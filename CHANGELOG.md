@@ -1,6 +1,11 @@
 # Changelog
 
-### 0.6.5 - 2021-02-26
+### 0.6.6 - 2021-03-03
+
+- Use CommonMain for every module except DateTime, waiting on LocalTime in Kotlinx-datetime
+- Update to Compose Multiplatform 1.1.0
+
+### 0.6.5 - 2021-03-03
 
 - Fix multiple issues with the dialog modifiers, mainly width padding on Android
 
