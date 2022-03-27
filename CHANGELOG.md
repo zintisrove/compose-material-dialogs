@@ -1,13 +1,14 @@
 # Changelog
 
-### 0.7.0 - 2021-03-03
+### 0.7.0 - 2021-03-27
 
--  Update compose to 1.1.1
--  [BREAKING CHANGE] Modify arguments of the `input` component to better match those of `TextField`
--  Add `textFieldStyle` parameter to `input` component to allow for outlined text field style ([#92](https://github.com/vanpra/compose-material-dialogs/issues/92))
--  Add text color options for month and day of week header text of date picker ([#124](https://github.com/vanpra/compose-material-dialogs/issues/124))
--  Add ability to change time picker title color ([#123](https://github.com/vanpra/compose-material-dialogs/issues/123))
--  Fix bug which causes input field to lose focus on validity change ([#132](https://github.com/vanpra/compose-material-dialogs/issues/132))
+- Update Compose Multiplatform to 1.1.1
+- [BREAKING CHANGE] Modify arguments of the `input` component to better match those of `TextField`
+- Add `textFieldStyle` parameter to `input` component to allow for outlined text field style ([#92](https://github.com/vanpra/compose-material-dialogs/issues/92))
+- Add text color options for month and day of week header text of date picker ([#124](https://github.com/vanpra/compose-material-dialogs/issues/124))
+- Add ability to change time picker title color ([#123](https://github.com/vanpra/compose-material-dialogs/issues/123))
+- Fix bug which causes input field to lose focus on validity change ([#132](https://github.com/vanpra/compose-material-dialogs/issues/132))
+- Change how desktop dialog shape is handled
 
 ### 0.6.6 - 2021-03-03
 
