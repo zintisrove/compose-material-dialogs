@@ -17,6 +17,7 @@ import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.core.screen.uniqueScreenKey
 import com.vanpra.composematerialdialogdemos.DialogAndShowButton
 import com.vanpra.composematerialdialogdemos.Strings
+import com.vanpra.composematerialdialogs.TextFieldStyle
 import com.vanpra.composematerialdialogs.iconTitle
 import com.vanpra.composematerialdialogs.input
 import com.vanpra.composematerialdialogs.message
@@ -91,7 +92,20 @@ private fun BasicDialogDemoContent() {
         }
     ) {
         title(text = Strings.input_dialog_title)
-        input(label = "Name", hint = "Jon Smith") {
+        input(label = "Name", placeholder = "Jon Smith") {
+            println("SELECTION:$it")
+        }
+    }
+
+    DialogAndShowButton(
+        buttonText = "Outlined Input Dialog",
+        buttons = {
+            negativeButton("Cancel")
+            positiveButton("Ok")
+        }
+    ) {
+        title(text = Strings.input_dialog_title)
+        input(label = "Name", placeholder = "Jon Smith", textFieldStyle = TextFieldStyle.Outlined) {
             println("SELECTION:$it")
         }
     }
@@ -107,7 +121,7 @@ private fun BasicDialogDemoContent() {
         title(text = Strings.input_dialog_title)
         input(
             label = "Name",
-            hint = "Jon Smith",
+            placeholder = "Jon Smith",
             focusRequester = focusRequester,
             focusOnShow = true
         ) {
@@ -124,7 +138,7 @@ private fun BasicDialogDemoContent() {
     ) {
         title(text = Strings.input_dialog_title)
         input(
-            label = "Name", hint = "Jon Smith",
+            label = "Name", placeholder = "Jon Smith",
             keyboardActions = KeyboardActions(
                 onDone = { submit() }
             ),
@@ -144,7 +158,7 @@ private fun BasicDialogDemoContent() {
         title("Please enter your email")
         input(
             label = "Email",
-            hint = "hello@example.com",
+            placeholder = "hello@example.com",
             errorMessage = "Invalid email",
             isTextValid = {
                 it.contains('@')

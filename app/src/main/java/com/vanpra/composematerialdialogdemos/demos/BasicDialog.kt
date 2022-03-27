@@ -12,9 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import com.vanpra.composematerialdialogdemos.DialogAndShowButton
 import com.vanpra.composematerialdialogdemos.R
+import com.vanpra.composematerialdialogs.TextFieldStyle
 import com.vanpra.composematerialdialogs.iconTitle
 import com.vanpra.composematerialdialogs.input
 import com.vanpra.composematerialdialogs.message
