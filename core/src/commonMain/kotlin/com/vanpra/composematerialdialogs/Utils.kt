@@ -90,7 +90,7 @@ data class MaterialDialogProperties(
     val resizable: Boolean = true
 )
 
-internal expect fun defaultDialogShape(): Shape
+internal expect fun getDialogShape(shape: Shape): Shape
 
 @Composable
 internal expect fun ScreenConfiguration.getMaxHeight(): Dp

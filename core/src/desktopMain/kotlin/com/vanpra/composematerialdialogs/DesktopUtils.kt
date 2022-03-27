@@ -7,6 +7,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -70,7 +71,7 @@ private fun DesktopWindowPosition.toWindowPosition(): WindowPosition {
 }
 
 @Composable
-internal actual fun defaultDialogShape() = RectangleShape
+internal actual fun getDialogShape(shape: Shape) = RectangleShape
 
 @Composable
 internal actual fun ScreenConfiguration.getMaxHeight(): Dp {

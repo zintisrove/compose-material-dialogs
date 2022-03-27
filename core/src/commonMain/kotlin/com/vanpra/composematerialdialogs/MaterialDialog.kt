@@ -213,7 +213,7 @@ fun MaterialDialog(
     dialogState: MaterialDialogState = rememberMaterialDialogState(),
     properties: MaterialDialogProperties = MaterialDialogProperties(),
     backgroundColor: Color = MaterialTheme.colors.surface,
-    shape: Shape = defaultDialogShape(),
+    shape: Shape = MaterialTheme.shapes.medium,
     border: BorderStroke? = null,
     elevation: Dp = 24.dp,
     autoDismiss: Boolean = true,
@@ -252,7 +252,7 @@ fun MaterialDialog(
                         .clipToBounds()
                         .dialogHeight()
                         .testTag("dialog"),
-                    shape = shape,
+                    shape = getDialogShape(shape),
                     color = backgroundColor,
                     border = border,
                     elevation = elevation

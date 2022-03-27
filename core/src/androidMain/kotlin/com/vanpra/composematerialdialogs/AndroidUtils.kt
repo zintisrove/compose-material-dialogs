@@ -65,7 +65,7 @@ private fun SecurePolicy.toSecureFlagPolicy(): SecureFlagPolicy {
 }
 
 @Composable
-internal actual fun defaultDialogShape(): Shape = MaterialTheme.shapes.medium
+internal actual fun getDialogShape(shape: Shape): Shape = shape
 
 @Composable
 internal actual fun ScreenConfiguration.getMaxHeight(): Dp {
