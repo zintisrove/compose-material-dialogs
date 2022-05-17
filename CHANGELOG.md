@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.7.1 - 2022-05-16
+
+-  Internationalise start day of week in date picker ([#146](https://github.com/vanpra/compose-material-dialogs/issues/146) and [#54](https://github.com/vanpra/compose-material-dialogs/issues/54))
+-  Add modifier parameter to input component ([#141](https://github.com/vanpra/compose-material-dialogs/issues/141))
+-  Add state parameter to the list component ([#140](https://github.com/vanpra/compose-material-dialogs/issues/140))
+
 ### 0.7.0 - 2021-03-27
 
 - Update Compose Multiplatform to 1.1.1
