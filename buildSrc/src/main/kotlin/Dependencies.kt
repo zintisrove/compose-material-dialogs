@@ -1,8 +1,8 @@
 object Dependencies {
-    const val desugar = "com.android.tools:desugar_jdk_libs:1.1.5"
+    const val desugar = "com.android.tools:desugar_jdk_libs:1.1.6"
 
     object ComposeMaterialDialogs {
-        const val version = "0.6.3"
+        const val version = "0.7.1"
 
         const val core = "ca.gosyer:compose-material-dialogs-core:$version"
         const val datetime = "ca.gosyer:compose-material-dialogs-datetime:$version"
@@ -19,7 +19,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        private const val version = "1.6.10"
+        private const val version = "1.7.0"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
     }
 
@@ -44,14 +44,15 @@ object Dependencies {
         }
 
         object Compose {
-            const val version = "1.1.1"
+            const val version = "1.2.0"
+            const val compilerVersion = "1.2.0"
+            const val mppVersion = "1.2.0-alpha01-dev753"
 
             const val ui = "androidx.compose.ui:ui:$version"
             const val material = "androidx.compose.material:material:$version"
-            const val materialIconsExtended =
-                "androidx.compose.material:material-icons-extended:$version"
+            const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
             const val animation = "androidx.compose.animation:animation:$version"
-            const val foundationLayout = "androidx.compose.foundation:foundation-layout:$version"
+            const val foundation = "androidx.compose.foundation:foundation:$version"
 
             const val testing = "androidx.compose.ui:ui-test-junit4:$version"
             const val activity = "androidx.activity:activity-compose:1.4.0"

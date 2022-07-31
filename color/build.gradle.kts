@@ -25,11 +25,10 @@ kotlin {
             dependencies {
                 api(kotlin("stdlib-common"))
                 api(project(":core"))
-                compileOnly(compose.ui)
-                compileOnly(compose.foundation)
-                compileOnly(compose.material)
-                compileOnly(compose.materialIconsExtended)
-                compileOnly(compose.animation)
+                api(compose.ui)
+                api(compose.foundation)
+                api(compose.material)
+                api(compose.animation)
             }
         }
         val commonTest by getting {
@@ -52,6 +51,10 @@ kotlin {
             kotlin.srcDir("src/jvmMain/kotlin")
             dependencies {
                 api(kotlin("stdlib-jdk8"))
+                api(Dependencies.AndroidX.Compose.ui)
+                api(Dependencies.AndroidX.Compose.foundation)
+                api(Dependencies.AndroidX.Compose.material)
+                api(Dependencies.AndroidX.Compose.animation)
             }
         }
         val androidTest by getting {

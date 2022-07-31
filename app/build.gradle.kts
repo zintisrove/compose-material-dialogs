@@ -1,18 +1,11 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("kotlin-kapt")
 }
 
 android {
-    compileSdk = 31
-    buildToolsVersion = "30.0.3"
-
     defaultConfig {
-
         applicationId = "com.vanpra.composematerialdialogs"
-        minSdk = 23
-        targetSdk = 30
 
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -38,7 +31,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.version
+        kotlinCompilerExtensionVersion = Dependencies.AndroidX.Compose.compilerVersion
     }
 }
 
@@ -58,7 +51,7 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.material)
     implementation(Dependencies.AndroidX.Compose.materialIconsExtended)
     implementation(Dependencies.AndroidX.Compose.animation)
-    implementation(Dependencies.AndroidX.Compose.foundationLayout)
+    implementation(Dependencies.AndroidX.Compose.foundation)
 
     implementation(Dependencies.AndroidX.Compose.activity)
     implementation(Dependencies.AndroidX.Compose.navigation)

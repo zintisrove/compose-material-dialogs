@@ -2,7 +2,6 @@ package com.vanpra.composematerialdialogs.datetime.date
 
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -20,11 +19,11 @@ import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ContentAlpha
@@ -32,7 +31,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
@@ -44,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.W400
@@ -151,18 +150,18 @@ internal fun DatePickerImpl(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
+@OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun YearPicker(
     viewDate: LocalDate,
     state: DatePickerState,
     pagerState: PagerState,
 ) {
-    val gridState = rememberLazyListState((viewDate.year - state.yearRange.first) / 3)
+    val gridState = rememberLazyGridState(viewDate.year - state.yearRange.first)
     val coroutineScope = rememberCoroutineScope()
 
     LazyVerticalGrid(
-        cells = GridCells.Fixed(3),
+        columns = GridCells.Fixed(3),
         state = gridState,
         modifier = Modifier.background(state.dialogBackground)
     ) {
@@ -223,9 +222,6 @@ private fun CalendarViewHeader(
 ) {
     val coroutineScope = rememberCoroutineScope()
     val month = remember { viewDate.month.getFullLocalName(locale) }
-    val yearDropdownIcon = remember(state.yearPickerShowing) {
-        if (state.yearPickerShowing) Icons.Default.ArrowDropUp else Icons.Default.ArrowDropDown
-    }
 
     Box(
         Modifier
@@ -251,9 +247,10 @@ private fun CalendarViewHeader(
             Spacer(Modifier.width(4.dp))
             Box(Modifier.size(24.dp), contentAlignment = Alignment.Center) {
                 Icon(
-                    yearDropdownIcon,
+                    Icons.Default.ArrowDropDown,
                     contentDescription = "Year Selector",
-                    tint = state.colors.calendarHeaderTextColor
+                    tint = state.colors.calendarHeaderTextColor,
+                    modifier = Modifier.rotate(if (state.yearPickerShowing) 180F else 0F)
                 )
             }
         }
@@ -302,7 +299,6 @@ private fun CalendarViewHeader(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun CalendarView(
     viewDate: LocalDate,
@@ -322,7 +318,7 @@ private fun CalendarView(
             viewDate.year == state.selected.year && viewDate.month == state.selected.month
         }
 
-        LazyVerticalGrid(cells = GridCells.Fixed(7), modifier = Modifier.height(240.dp)) {
+        LazyVerticalGrid(columns = GridCells.Fixed(7), modifier = Modifier.height(240.dp)) {
             for (x in 0 until calendarDatesData.first) {
                 item { Box(Modifier.size(40.dp)) }
             }
@@ -376,7 +372,6 @@ private fun DateSelectionBox(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun DayOfWeekHeader(state: DatePickerState, locale: Locale) {
     val dayHeaders = WeekFields.of(locale).firstDayOfWeek.let { firstDayOfWeek ->
@@ -392,8 +387,8 @@ private fun DayOfWeekHeader(state: DatePickerState, locale: Locale) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        LazyVerticalGrid(cells = GridCells.Fixed(7)) {
-            dayHeaders.forEach { it ->
+        LazyVerticalGrid(columns = GridCells.Fixed(7)) {
+            dayHeaders.forEach {
                 item {
                     Box(Modifier.size(40.dp)) {
                         Text(

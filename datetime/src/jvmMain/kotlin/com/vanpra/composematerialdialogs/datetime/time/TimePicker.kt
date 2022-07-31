@@ -40,6 +40,7 @@ import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.input.pointer.PointerInputScope
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -615,7 +616,7 @@ private fun ClockLayout(
                 onDragEnd = { if (dragSuccess.value) onLift() },
             ) { change, _ ->
                 dragSuccess.value = updateAnchor(change.position)
-                change.consumePositionChange()
+                if (change.positionChange() != Offset.Zero) change.consume()
             }
         }
 

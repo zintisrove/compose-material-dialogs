@@ -32,7 +32,6 @@ kotlin {
                 api(compose.ui)
                 api(compose.foundation)
                 api(compose.material)
-                api(compose.materialIconsExtended)
                 api(compose.animation)
                 implementation(Dependencies.Accompanist.pager)
             }
@@ -57,6 +56,10 @@ kotlin {
             kotlin.srcDir("src/jvmMain/kotlin")
             dependencies {
                 api(kotlin("stdlib-jdk8"))
+                api(Dependencies.AndroidX.Compose.ui)
+                api(Dependencies.AndroidX.Compose.foundation)
+                api(Dependencies.AndroidX.Compose.material)
+                api(Dependencies.AndroidX.Compose.animation)
             }
         }
         val androidTest by getting {
