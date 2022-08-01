@@ -4,7 +4,8 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ae8d455118164f43a24732761a970cc8)](https://www.codacy.com/gh/vanpra/compose-material-dialogs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vanpra/compose-material-dialogs&amp;utm_campaign=Badge_Grade)![Build & Test](https://github.com/vanpra/compose-material-dialogs/actions/workflows/main.yml/badge.svg)
 
-**Current Library Compose Multiplatform Version: 1.1.1**
+**Current Library Compose Multiplatform Version: 1.2.0-alpha01-dev753**
+**Current Library Jetpack Compose Version: 1.2.0**
 
 ### [See Releases and Changelog](https://github.com/vanpra/compose-material-dialogs/blob/main/CHANGELOG.md)
 
@@ -19,7 +20,7 @@
 ```gradle
 dependencies {
   ...
-  implementation "ca.gosyer:compose-material-dialogs-core:0.7.1" 
+  implementation "ca.gosyer:compose-material-dialogs-core:0.8.0" 
   ...
 }
 ```
@@ -35,7 +36,7 @@ dependencies {
 ```gradle
 dependencies {
   ...
-  implementation "ca.gosyer:compose-material-dialogs-datetime:0.7.1"
+  implementation "ca.gosyer:compose-material-dialogs-datetime:0.8.0"
   ...
 }
 ```
@@ -51,7 +52,7 @@ dependencies {
 ```gradle
 dependencies {
   ...
-  implementation "ca.gosyer:compose-material-dialogs-color:0.7.1"
+  implementation "ca.gosyer:compose-material-dialogs-color:0.8.0"
   ...
 }
 ```

@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.8.0 - 2022-07-31
+
+- Update compose mpp to 1.2.0-alpha01-dev753
+- Update compose to 1.2.0 ([#156](https://github.com/vanpra/compose-material-dialogs/issues/156))
+- Update kotlin to 1.7.0
+- Remove `material-icons-extended` dependency ([#153](https://github.com/vanpra/compose-material-dialogs/issues/153))
+- Add parameter for changing title and message style and color ([#150](https://github.com/vanpra/compose-material-dialogs/issues/150))
+
 ### 0.7.1 - 2022-05-16
 
 -  Internationalise start day of week in date picker ([#146](https://github.com/vanpra/compose-material-dialogs/issues/146) and [#54](https://github.com/vanpra/compose-material-dialogs/issues/54))
