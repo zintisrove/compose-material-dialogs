@@ -5,6 +5,7 @@
 - Update compose mpp to 1.2.0-alpha01-dev753
 - Update jetpack compose to 1.2.0 ([#156](https://github.com/vanpra/compose-material-dialogs/issues/156))
 - Update kotlin to 1.7.0
+- Use Kotlinx-DateTime for DateTime module, allowing it to be fully Multiplatform
 - Remove `material-icons-extended` dependency ([#153](https://github.com/vanpra/compose-material-dialogs/issues/153))
 - Add parameter for changing title and message style and color ([#150](https://github.com/vanpra/compose-material-dialogs/issues/150))
 
