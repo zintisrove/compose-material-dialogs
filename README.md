@@ -16,7 +16,7 @@
 
 ![](https://raw.githubusercontent.com/vanpra/compose-material-dialogs/main/imgs/full_core.png)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/core)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-core)
 
 ```gradle
 dependencies {
@@ -32,7 +32,7 @@ dependencies {
 
 ![](https://raw.githubusercontent.com/vanpra/compose-material-dialogs/main/imgs/date_and_time.png)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-datetime/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/datetime)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-datetime/badge.svg)](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-datetime)
 
 ```gradle
 dependencies {
@@ -48,7 +48,7 @@ dependencies {
 
 ![](https://raw.githubusercontent.com/vanpra/compose-material-dialogs/main/imgs/color_picker.png)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-color/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.vanpra.compose-material-dialogs/color)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-color/badge.svg)](https://maven-badges.herokuapp.com/maven-central/ca.gosyer/compose-material-dialogs-color)
 
 ```gradle
 dependencies {
