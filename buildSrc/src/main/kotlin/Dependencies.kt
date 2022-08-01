@@ -2,7 +2,7 @@ object Dependencies {
     const val desugar = "com.android.tools:desugar_jdk_libs:1.1.6"
 
     object ComposeMaterialDialogs {
-        const val version = "0.7.1"
+        const val version = "0.8.0"
 
         const val core = "ca.gosyer:compose-material-dialogs-core:$version"
         const val datetime = "ca.gosyer:compose-material-dialogs-datetime:$version"
@@ -21,6 +21,11 @@ object Dependencies {
     object Kotlin {
         private const val version = "1.7.0"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
+    }
+
+    object DateTime {
+        private const val version = "0.4.0"
+        const val dateTime = "org.jetbrains.kotlinx:kotlinx-datetime:$version"
     }
 
     object Shot {

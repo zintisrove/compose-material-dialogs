@@ -47,6 +47,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.W400
 import androidx.compose.ui.text.font.FontWeight.Companion.W600
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -55,13 +56,21 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.vanpra.composematerialdialogs.MaterialDialogScope
+import com.vanpra.composematerialdialogs.datetime.util.WeekFields
 import com.vanpra.composematerialdialogs.datetime.util.getFullLocalName
+import com.vanpra.composematerialdialogs.datetime.util.getNarrowDisplayName
 import com.vanpra.composematerialdialogs.datetime.util.getShortLocalName
+import com.vanpra.composematerialdialogs.datetime.util.isLeapYear
 import com.vanpra.composematerialdialogs.datetime.util.isSmallDevice
+import com.vanpra.composematerialdialogs.datetime.util.plus
+import com.vanpra.composematerialdialogs.datetime.util.testLength
+import com.vanpra.composematerialdialogs.datetime.util.withDayOfMonth
 import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.time.temporal.WeekFields
-import java.util.Locale
+import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.isoDayNumber
+import kotlinx.datetime.toLocalDateTime
 
 /**
  * @brief A date picker body layout
@@ -76,13 +85,17 @@ import java.util.Locale
  */
 @Composable
 fun MaterialDialogScope.datepicker(
-    initialDate: LocalDate = LocalDate.now(),
+    initialDate: LocalDate = remember {
+        Clock.System.now()
+            .toLocalDateTime(TimeZone.currentSystemDefault())
+            .date
+    },
     title: String = "SELECT DATE",
     colors: DatePickerColors = DatePickerDefaults.colors(),
     yearRange: IntRange = IntRange(1900, 2100),
     waitForPositiveButton: Boolean = true,
     allowedDateValidator: (LocalDate) -> Boolean = { true },
-    locale: Locale = Locale.getDefault(),
+    locale: Locale = Locale.current,
     onDateChange: (LocalDate) -> Unit = {}
 ) {
     val datePickerState = remember {
@@ -110,7 +123,7 @@ internal fun DatePickerImpl(
     locale: Locale
 ) {
     val pagerState = rememberPagerState(
-        initialPage = (state.selected.year - state.yearRange.first) * 12 + state.selected.monthValue - 1
+        initialPage = (state.selected.year - state.yearRange.first) * 12 + state.selected.monthNumber - 1
     )
 
     Column(Modifier.fillMaxWidth()) {
@@ -122,7 +135,7 @@ internal fun DatePickerImpl(
             modifier = Modifier.height(336.dp)
         ) { page ->
             val viewDate = remember {
-                LocalDate.of(
+                LocalDate(
                     state.yearRange.first + page / 12,
                     page % 12 + 1,
                     1
@@ -376,7 +389,7 @@ private fun DateSelectionBox(
 private fun DayOfWeekHeader(state: DatePickerState, locale: Locale) {
     val dayHeaders = WeekFields.of(locale).firstDayOfWeek.let { firstDayOfWeek ->
         (0L until 7L).map {
-            firstDayOfWeek.plus(it).getDisplayName(java.time.format.TextStyle.NARROW, locale)
+            firstDayOfWeek.plus(it).getNarrowDisplayName(locale)
         }
     }
 
@@ -444,10 +457,10 @@ private fun CalendarHeader(title: String, state: DatePickerState, locale: Locale
 }
 
 private fun getDates(date: LocalDate, locale: Locale): Pair<Int, Int> {
-    val numDays = date.month.length(date.isLeapYear)
+    val numDays = date.month.testLength(date.isLeapYear)
 
-    val firstDayOfWeek = WeekFields.of(locale).firstDayOfWeek.value
-    val firstDay = date.withDayOfMonth(1).dayOfWeek.value - firstDayOfWeek % 7
+    val firstDayOfWeek = WeekFields.of(locale).firstDayOfWeek.isoDayNumber
+    val firstDay = date.withDayOfMonth(1).dayOfWeek.isoDayNumber - firstDayOfWeek % 7
 
     return Pair(firstDay, numDays)
 }

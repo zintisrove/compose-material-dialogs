@@ -47,6 +47,8 @@ dependencies {
     implementation(Dependencies.Google.material)
     implementation(Dependencies.AndroidX.coreKtx)
 
+    implementation(Dependencies.DateTime.dateTime)
+
     implementation(Dependencies.AndroidX.Compose.ui)
     implementation(Dependencies.AndroidX.Compose.material)
     implementation(Dependencies.AndroidX.Compose.materialIconsExtended)

@@ -34,6 +34,7 @@ kotlin {
                 api(compose.material)
                 api(compose.animation)
                 implementation(Dependencies.Accompanist.pager)
+                implementation(Dependencies.DateTime.dateTime)
             }
         }
         val commonTest by getting {

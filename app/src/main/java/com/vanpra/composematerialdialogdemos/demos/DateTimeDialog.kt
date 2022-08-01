@@ -13,8 +13,8 @@ import com.vanpra.composematerialdialogs.datetime.date.datepicker
 import com.vanpra.composematerialdialogs.datetime.time.TimePickerColors
 import com.vanpra.composematerialdialogs.datetime.time.TimePickerDefaults
 import com.vanpra.composematerialdialogs.datetime.time.timepicker
-import java.time.DayOfWeek
-import java.time.LocalTime
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.LocalTime
 
 /**
  * @brief Date and Time Picker Demos
@@ -57,7 +57,7 @@ fun DateTimeDialogDemo() {
     ) {
         timepicker(
             colors = colors,
-            timeRange = LocalTime.of(9, 35)..LocalTime.of(21, 13),
+            timeRange = LocalTime(9, 35)..LocalTime(21, 13),
             is24HourClock = false
         ) {
             println(it.toString())
@@ -81,7 +81,7 @@ fun DateTimeDialogDemo() {
     ) {
         timepicker(
             colors = colors,
-            timeRange = LocalTime.of(9, 35)..LocalTime.of(21, 13),
+            timeRange = LocalTime(9, 35)..LocalTime(21, 13),
             is24HourClock = true
         ) {
             println(it.toString())

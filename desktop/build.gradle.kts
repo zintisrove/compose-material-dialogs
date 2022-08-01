@@ -15,6 +15,8 @@ dependencies {
     implementation(Dependencies.ComposeMaterialDialogs.color)*/
 
     implementation("cafe.adriel.voyager:voyager-navigator:1.0.0-beta16")
+
+    implementation(Dependencies.DateTime.dateTime)
 }
 
 compose.desktop {

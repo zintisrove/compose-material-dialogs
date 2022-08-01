@@ -46,6 +46,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vanpra.composematerialdialogs.MaterialDialogScope
+import com.vanpra.composematerialdialogs.datetime.util.Max
+import com.vanpra.composematerialdialogs.datetime.util.Min
 import com.vanpra.composematerialdialogs.datetime.util.drawText
 import com.vanpra.composematerialdialogs.datetime.util.getOffset
 import com.vanpra.composematerialdialogs.datetime.util.isAM
@@ -54,7 +56,12 @@ import com.vanpra.composematerialdialogs.datetime.util.noSeconds
 import com.vanpra.composematerialdialogs.datetime.util.simpleHour
 import com.vanpra.composematerialdialogs.datetime.util.toAM
 import com.vanpra.composematerialdialogs.datetime.util.toPM
-import java.time.LocalTime
+import com.vanpra.composematerialdialogs.datetime.util.withHour
+import com.vanpra.composematerialdialogs.datetime.util.withMinute
+import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlin.math.PI
 import kotlin.math.min
 import kotlin.math.pow
@@ -81,11 +88,16 @@ private data class SelectedOffset(
  */
 @Composable
 fun MaterialDialogScope.timepicker(
-    initialTime: LocalTime = LocalTime.now().noSeconds(),
+    initialTime: LocalTime = remember {
+        Clock.System.now()
+            .toLocalDateTime(TimeZone.currentSystemDefault())
+            .time
+            .noSeconds()
+    },
     title: String = "SELECT TIME",
     colors: TimePickerColors = TimePickerDefaults.colors(),
     waitForPositiveButton: Boolean = true,
-    timeRange: ClosedRange<LocalTime> = LocalTime.MIN..LocalTime.MAX,
+    timeRange: ClosedRange<LocalTime> = LocalTime.Min..LocalTime.Max,
     is24HourClock: Boolean = false,
     onTimeChange: (LocalTime) -> Unit = {}
 ) {
@@ -103,7 +115,7 @@ fun MaterialDialogScope.timepicker(
     } else {
         DisposableEffect(timePickerState.selectedTime) {
             onTimeChange(timePickerState.selectedTime)
-            onDispose { }
+            onDispose {}
         }
     }
 
