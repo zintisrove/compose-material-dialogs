@@ -20,11 +20,6 @@ kotlin {
     }
 
     sourceSets {
-        all {
-            languageSettings {
-                optIn("kotlin.RequiresOptIn")
-            }
-        }
         val commonMain by getting {
             dependencies {
                 api(kotlin("stdlib-common"))
@@ -43,18 +38,21 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
+
+        val jvmCommon by creating {
+            dependsOn(commonMain)
+        }
+
         val jvmMain by getting {
-            kotlin.srcDir("src/desktopMain/kotlin")
+            dependsOn(jvmCommon)
             dependencies {
                 api(kotlin("stdlib-jdk8"))
             }
         }
-        val jvmTest by getting {
-            kotlin.srcDir("src/desktopTest/kotlin")
-        }
+        val jvmTest by getting
 
         val androidMain by getting {
-            kotlin.srcDir("src/jvmMain/kotlin")
+            dependsOn(jvmCommon)
             dependencies {
                 api(kotlin("stdlib-jdk8"))
                 api(Dependencies.AndroidX.Compose.ui)
@@ -63,9 +61,7 @@ kotlin {
                 api(Dependencies.AndroidX.Compose.animation)
             }
         }
-        val androidTest by getting {
-            kotlin.srcDir("src/jvmTest/kotlin")
-        }
+        val androidTest by getting
     }
 }
 

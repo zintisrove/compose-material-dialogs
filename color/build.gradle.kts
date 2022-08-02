@@ -37,18 +37,22 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
+
+        val jvmCommon by creating {
+            dependsOn(commonMain)
+        }
+
         val jvmMain by getting {
-            kotlin.srcDir("src/desktopMain/kotlin")
+            dependsOn(jvmCommon)
             dependencies {
                 api(kotlin("stdlib-jdk8"))
             }
         }
         val jvmTest by getting {
-            kotlin.srcDir("src/desktopTest/kotlin")
         }
 
         val androidMain by getting {
-            kotlin.srcDir("src/jvmMain/kotlin")
+            dependsOn(jvmCommon)
             dependencies {
                 api(kotlin("stdlib-jdk8"))
                 api(Dependencies.AndroidX.Compose.ui)
