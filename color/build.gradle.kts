@@ -48,8 +48,7 @@ kotlin {
                 api(kotlin("stdlib-jdk8"))
             }
         }
-        val jvmTest by getting {
-        }
+        val jvmTest by getting
 
         val androidMain by getting {
             dependsOn(jvmCommon)
@@ -61,9 +60,7 @@ kotlin {
                 api(Dependencies.AndroidX.Compose.animation)
             }
         }
-        val androidTest by getting {
-            kotlin.srcDir("src/jvmTest/kotlin")
-        }
+        val androidTest by getting
     }
 }
 
