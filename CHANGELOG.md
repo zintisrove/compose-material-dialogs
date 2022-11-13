@@ -1,5 +1,13 @@
 # Changelog
 
+### 0.9.0 - 2022-11-13
+
+- Update compose mpp to 1.2.1
+- Update jetpack compose to 1.2.1
+- Update kotlin to 1.7.20
+- iOS Support
+- Use standalone month and day of week names for date picker(related to [#154](https://github.com/vanpra/compose-material-dialogs/pull/154))
+
 ### 0.8.0 - 2022-07-31
 
 - Update compose mpp to 1.2.0-alpha01-dev753
