@@ -38,7 +38,7 @@ jobs:
 #      - name: Generate cache key
 #        run: ./checksum.sh checksum.txt
 #
-#      - uses: actions/cache@v2
+#      - uses: actions/cache@v3
 #        with:
 #          path: |
 #            ~/.gradle/caches/modules-*
@@ -60,7 +60,7 @@ jobs:
 #
 #      - name: Upload test results
 #        if: always()
-#        uses: actions/upload-artifact@v2
+#        uses: actions/upload-artifact@v3
 #        with:
 #          name: test-results-robolectric
 #          path: |
@@ -107,7 +107,7 @@ jobs:
 #      - name: Generate cache key
 #        run: ./checksum.sh checksum.txt
 #
-#      - uses: actions/cache@v2
+#      - uses: actions/cache@v3
 #        with:
 #          path: |
 #            ~/.gradle/caches/modules-*
@@ -144,14 +144,14 @@ jobs:
 #
 #      - name: Upload logs
 #        if: always()
-#        uses: actions/upload-artifact@v2
+#        uses: actions/upload-artifact@v3
 #        with:
 #          name: logs-${{ matrix.api-level }}-${{ steps.determine-target.outputs.TARGET }}-${{ matrix.shard }}
 #          path: logcat.txt
 #
 #      - name: Upload test results
 #        if: always()
-#        uses: actions/upload-artifact@v2
+#        uses: actions/upload-artifact@v3
 #        with:
 #          name: test-results-${{ matrix.api-level }}-${{ steps.determine-target.outputs.TARGET }}-${{ matrix.shard }}
 #          path: |
