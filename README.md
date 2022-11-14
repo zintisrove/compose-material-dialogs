@@ -8,7 +8,7 @@
 
 **Current Library Jetpack Compose Version: 1.2.1**
 
-### [See Releases and Changelog](https://github.com/vanpra/compose-material-dialogs/blob/main/CHANGELOG.md)
+### [See Releases and Changelog](https://github.com/syer10/compose-material-dialogs/blob/main/CHANGELOG.md)
 
 ## Core
 
