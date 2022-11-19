@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("org.jetbrains.compose") version "1.2.1" apply false
     //id("com.diffplug.spotless") version "6.0.4"
