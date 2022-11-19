@@ -1,5 +1,8 @@
 # Changelog
 
+### 0.9.1 - 2022-11-18
+- Rename modules so they have a unique name for iOS consumers
+
 ### 0.9.0 - 2022-11-13
 
 - Update compose mpp to 1.2.1
