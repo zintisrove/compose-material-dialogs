@@ -34,9 +34,9 @@ kotlin {
                 api(compose.material)
                 api(compose.animation)
                 api(Dependencies.DateTime.dateTime)
-                api(project(":core"))
-                api(project(":color"))
-                api(project(":datetime"))
+                api(projects.composeMaterialDialogsCore)
+                api(projects.composeMaterialDialogsColor)
+                api(projects.composeMaterialDialogsDatetime)
             }
         }
         val commonTest by getting {

@@ -38,9 +38,9 @@ android {
 dependencies {
     implementation(projects.app.common)
 
-    implementation(projects.core)
-    implementation(projects.color)
-    implementation(projects.datetime)
+    implementation(projects.composeMaterialDialogsCore)
+    implementation(projects.composeMaterialDialogsColor)
+    implementation(projects.composeMaterialDialogsDatetime)
 
 //    implementation(Dependencies.ComposeMaterialDialogs.core)
 //    implementation(Dependencies.ComposeMaterialDialogs.datetime)

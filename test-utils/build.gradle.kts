@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    api(project(":core"))
+    api(projects.composeMaterialDialogsCore)
 
     implementation(Dependencies.AndroidX.Compose.ui)
     implementation(Dependencies.AndroidX.Compose.material)
