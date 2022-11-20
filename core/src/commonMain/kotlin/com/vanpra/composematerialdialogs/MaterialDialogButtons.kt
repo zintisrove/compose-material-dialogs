@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.ButtonColors
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -122,6 +124,7 @@ class MaterialDialogButtons(private val scope: MaterialDialogScope) {
     fun button(
         text: String,
         textStyle: TextStyle = MaterialTheme.typography.button,
+        colors: ButtonColors = ButtonDefaults.textButtonColors(),
         onClick: () -> Unit = {}
     ) {
         val buttonText = text.uppercase()
@@ -132,6 +135,7 @@ class MaterialDialogButtons(private val scope: MaterialDialogScope) {
             modifier = Modifier
                 .layoutId(MaterialDialogButtonTypes.Text)
                 .testTag(MaterialDialogButtonTypes.Text.testTag),
+            colors = colors
         ) {
             Text(text = buttonText, style = textStyle)
         }
@@ -150,6 +154,7 @@ class MaterialDialogButtons(private val scope: MaterialDialogScope) {
     fun positiveButton(
         text: String,
         textStyle: TextStyle = MaterialTheme.typography.button,
+        colors: ButtonColors = ButtonDefaults.textButtonColors(),
         disableDismiss: Boolean = false,
         onClick: () -> Unit = {}
     ) {
@@ -171,7 +176,8 @@ class MaterialDialogButtons(private val scope: MaterialDialogScope) {
             },
             modifier = Modifier.layoutId(MaterialDialogButtonTypes.Positive)
                 .testTag(MaterialDialogButtonTypes.Positive.testTag),
-            enabled = buttonEnabled
+            enabled = buttonEnabled,
+            colors = colors
         ) {
             Text(text = buttonText, style = textStyle)
         }
@@ -189,6 +195,7 @@ class MaterialDialogButtons(private val scope: MaterialDialogScope) {
     fun negativeButton(
         text: String,
         textStyle: TextStyle = MaterialTheme.typography.button,
+        colors: ButtonColors = ButtonDefaults.textButtonColors(),
         onClick: () -> Unit = {}
     ) {
         val buttonText = text.uppercase()
@@ -203,6 +210,7 @@ class MaterialDialogButtons(private val scope: MaterialDialogScope) {
             },
             modifier = Modifier.layoutId(MaterialDialogButtonTypes.Negative)
                 .testTag(MaterialDialogButtonTypes.Negative.testTag),
+            colors = colors
         ) {
             Text(text = buttonText, style = textStyle)
         }
