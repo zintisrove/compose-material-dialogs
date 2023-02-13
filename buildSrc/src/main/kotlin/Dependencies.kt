@@ -49,7 +49,7 @@ object Dependencies {
         }
 
         object Compose {
-            const val compilerVersion = "1.4.2"
+            const val compilerVersion = "1.4.1"
             const val mppVersion = "1.3.0"
 
             const val runtime = "androidx.compose.ui:ui:1.3.3"
