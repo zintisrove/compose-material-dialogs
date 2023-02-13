@@ -85,6 +85,7 @@ data class MaterialDialogProperties(
     val dismissOnClickOutside: Boolean = true,
     val securePolicy: SecurePolicy = SecurePolicy.Inherit,
     val usePlatformDefaultWidth : Boolean = false,
+    val decorFitsSystemWindows: Boolean = true,
     val position: DesktopWindowPosition = DesktopWindowPosition(Alignment.Center),
     val size: DpSize = DpSize(400.dp, 300.dp),
     val title: String = "Untitled",

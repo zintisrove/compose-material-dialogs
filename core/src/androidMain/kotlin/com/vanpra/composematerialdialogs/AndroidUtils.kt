@@ -48,7 +48,8 @@ internal actual fun DialogBox(
         dismissOnBackPress = properties.dismissOnBackPress,
         dismissOnClickOutside = properties.dismissOnClickOutside,
         securePolicy = properties.securePolicy.toSecureFlagPolicy(),
-        usePlatformDefaultWidth = properties.usePlatformDefaultWidth
+        usePlatformDefaultWidth = properties.usePlatformDefaultWidth,
+        decorFitsSystemWindows = properties.decorFitsSystemWindows
     ),
     content = content
 )
