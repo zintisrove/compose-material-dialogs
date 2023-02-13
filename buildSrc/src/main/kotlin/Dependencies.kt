@@ -1,5 +1,5 @@
 object Dependencies {
-    const val desugar = "com.android.tools:desugar_jdk_libs:1.1.6"
+    const val desugar = "com.android.tools:desugar_jdk_libs:2.0.2"
 
     object ComposeMaterialDialogs {
         const val version = "0.8.0"
@@ -19,7 +19,7 @@ object Dependencies {
     }
 
     object Kotlin {
-        private const val version = "1.7.20"
+        private const val version = "1.8.0"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
     }
 
@@ -49,17 +49,17 @@ object Dependencies {
         }
 
         object Compose {
-            const val version = "1.2.1"
-            const val compilerVersion = "1.3.2"
-            const val mppVersion = "1.2.1"
+            const val compilerVersion = "1.4.2"
+            const val mppVersion = "1.3.0"
 
-            const val ui = "androidx.compose.ui:ui:$version"
-            const val material = "androidx.compose.material:material:$version"
-            const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
-            const val animation = "androidx.compose.animation:animation:$version"
-            const val foundation = "androidx.compose.foundation:foundation:$version"
+            const val runtime = "androidx.compose.ui:ui:1.3.3"
+            const val ui = "androidx.compose.ui:ui:1.3.3"
+            const val material = "androidx.compose.material:material:1.3.1"
+            const val materialIconsExtended = "androidx.compose.material:material-icons-extended:1.3.1"
+            const val animation = "androidx.compose.animation:animation:1.3.3"
+            const val foundation = "androidx.compose.foundation:foundation:1.3.1"
 
-            const val testing = "androidx.compose.ui:ui-test-junit4:$version"
+            const val testing = "androidx.compose.ui:ui-test-junit4:1.3.3"
             const val activity = "androidx.activity:activity-compose:1.4.0"
             const val navigation = "androidx.navigation:navigation-compose:2.4.2"
         }
