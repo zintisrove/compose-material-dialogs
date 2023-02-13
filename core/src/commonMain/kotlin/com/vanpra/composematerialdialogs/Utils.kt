@@ -1,6 +1,7 @@
 package com.vanpra.composematerialdialogs
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,7 +39,7 @@ internal expect fun DialogBox(
 
 
 // SecureFlagPolicy For Android Dialogs
-
+@Stable
 enum class SecurePolicy {
     Inherit, //Forces [WindowManager.LayoutParams.FLAG_SECURE]
     SecureOn, // Sets [WindowManager.LayoutParams.FLAG_SECURE] on the window
@@ -50,26 +51,27 @@ enum class SecurePolicy {
 fun DesktopWindowPosition(x: Dp, y: Dp): DesktopWindowPosition = DesktopWindowPosition.Absolute(x = x, y = y)
 fun DesktopWindowPosition(alignment: Alignment): DesktopWindowPosition = DesktopWindowPosition.Aligned(alignment)
 
+@Stable
 sealed class DesktopWindowPosition {
-    @Stable
     abstract val x: Dp
 
-    @Stable
     abstract val y: Dp
 
-    @Stable
     abstract val isSpecified: Boolean
 
+    @Immutable
     object PlatformDefault : DesktopWindowPosition() {
         override val x: Dp get() = Dp.Unspecified
         override val y: Dp get() = Dp.Unspecified
         override val isSpecified: Boolean get() = false
     }
 
+    @Immutable
     class Absolute(override val x: Dp, override val y: Dp) : DesktopWindowPosition() {
         override val isSpecified: Boolean = true
     }
 
+    @Immutable
     class Aligned(val alignment: Alignment) : DesktopWindowPosition() {
         override val x: Dp get() = Dp.Unspecified
         override val y: Dp get() = Dp.Unspecified
@@ -77,7 +79,7 @@ sealed class DesktopWindowPosition {
     }
 }
 
-@Stable
+@Immutable
 data class MaterialDialogProperties(
     val dismissOnBackPress: Boolean = true,
     val dismissOnClickOutside: Boolean = true,
