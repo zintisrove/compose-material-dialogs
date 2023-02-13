@@ -1,5 +1,12 @@
 # Changelog
 
+### 0.9.2 - 2023-02-13
+- Update Compose Multiplatform to 1.3.0
+- Update kotlin to 1.8.0
+- Support android dialog decorFitsSystemWindows
+- Pass button colors to buttons (Thanks @NelzkieLabs)
+- Fixes for color dialog (Thanks @NelzkieLabs)
+
 ### 0.9.1 - 2022-11-18
 - Rename modules so they have a unique name for iOS consumers
 
