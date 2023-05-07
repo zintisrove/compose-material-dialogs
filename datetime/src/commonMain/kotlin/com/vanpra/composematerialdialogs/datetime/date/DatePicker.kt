@@ -2,6 +2,7 @@ package com.vanpra.composematerialdialogs.datetime.date
 
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -24,6 +25,9 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ContentAlpha
@@ -51,10 +55,6 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.PagerState
-import com.google.accompanist.pager.rememberPagerState
 import com.vanpra.composematerialdialogs.MaterialDialogScope
 import com.vanpra.composematerialdialogs.datetime.util.WeekFields
 import com.vanpra.composematerialdialogs.datetime.util.getFullLocalName
@@ -114,7 +114,7 @@ fun MaterialDialogScope.datepicker(
     }
 }
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun DatePickerImpl(
     title: String,
@@ -125,11 +125,12 @@ internal fun DatePickerImpl(
     val pagerState = rememberPagerState(
         initialPage = (state.selected.year - state.yearRange.first) * 12 + state.selected.monthNumber - 1
     )
+    val pageCount = (state.yearRange.last - state.yearRange.first + 1) * 12
 
     Column(Modifier.fillMaxWidth()) {
         CalendarHeader(title, state, locale)
         HorizontalPager(
-            count = (state.yearRange.last - state.yearRange.first + 1) * 12,
+            pageCount = pageCount,
             state = pagerState,
             verticalAlignment = Alignment.Top,
             modifier = Modifier.height(336.dp)
@@ -143,7 +144,7 @@ internal fun DatePickerImpl(
             }
 
             Column {
-                CalendarViewHeader(viewDate, state, pagerState, locale)
+                CalendarViewHeader(viewDate, state, pagerState, locale, pageCount)
                 Box {
                     androidx.compose.animation.AnimatedVisibility(
                         state.yearPickerShowing,
@@ -163,7 +164,7 @@ internal fun DatePickerImpl(
     }
 }
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun YearPicker(
     viewDate: LocalDate,
@@ -225,13 +226,14 @@ private fun YearPickerItem(
     }
 }
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun CalendarViewHeader(
     viewDate: LocalDate,
     state: DatePickerState,
     pagerState: PagerState,
-    locale: Locale
+    locale: Locale,
+    pageCount: Int,
 ) {
     val coroutineScope = rememberCoroutineScope()
     val month = remember { viewDate.month.getFullLocalName(locale) }
@@ -301,7 +303,7 @@ private fun CalendarViewHeader(
                     .clickable(
                         onClick = {
                             coroutineScope.launch {
-                                if (pagerState.currentPage + 1 < pagerState.pageCount)
+                                if (pagerState.currentPage + 1 < pageCount)
                                     pagerState.animateScrollToPage(pagerState.currentPage + 1)
                             }
                         }

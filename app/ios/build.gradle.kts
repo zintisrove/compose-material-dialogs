@@ -42,7 +42,7 @@ kotlin {
 
                 implementation(Dependencies.DateTime.dateTime)
 
-                implementation("ca.gosyer:voyager-navigator:1.0.0-rc06")
+                implementation("cafe.adriel.voyager:voyager-navigator:1.0.0-rc06")
             }
         }
         val uikitTest by creating {

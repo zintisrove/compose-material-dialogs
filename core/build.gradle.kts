@@ -26,11 +26,10 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(kotlin("stdlib-common"))
-                api(compose.ui)
-                api(compose.foundation)
-                api(compose.material)
-                api(compose.animation)
+                compileOnly(compose.ui)
+                compileOnly(compose.foundation)
+                compileOnly(compose.material)
+                compileOnly(compose.animation)
             }
         }
         val commonTest by getting {
@@ -47,7 +46,6 @@ kotlin {
         val jvmMain by getting {
             dependsOn(jvmCommon)
             dependencies {
-                api(kotlin("stdlib-jdk8"))
             }
         }
         val jvmTest by getting
@@ -55,14 +53,13 @@ kotlin {
         val androidMain by getting {
             dependsOn(jvmCommon)
             dependencies {
-                api(kotlin("stdlib-jdk8"))
-                api(Dependencies.AndroidX.Compose.ui)
-                api(Dependencies.AndroidX.Compose.foundation)
-                api(Dependencies.AndroidX.Compose.material)
-                api(Dependencies.AndroidX.Compose.animation)
+                compileOnly(Dependencies.AndroidX.Compose.ui)
+                compileOnly(Dependencies.AndroidX.Compose.foundation)
+                compileOnly(Dependencies.AndroidX.Compose.material)
+                compileOnly(Dependencies.AndroidX.Compose.animation)
             }
         }
-        val androidTest by getting
+        val androidUnitTest by getting
 
         val iosMain by creating {
             dependsOn(commonMain)
@@ -82,3 +79,6 @@ kotlin {
     }
 }
 
+android {
+    namespace = "com.vanpra.composematerialdialogs.core"
+}

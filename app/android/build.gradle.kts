@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    namespace = "com.vanpra.composematerialdialogdemos"
+
     defaultConfig {
         applicationId = "com.vanpra.composematerialdialogs.app.android"
 

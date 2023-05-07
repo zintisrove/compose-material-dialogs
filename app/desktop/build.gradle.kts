@@ -16,13 +16,13 @@ dependencies {
     implementation(Dependencies.ComposeMaterialDialogs.datetime)
     implementation(Dependencies.ComposeMaterialDialogs.color)*/
 
-    implementation("ca.gosyer:voyager-navigator:1.0.0-rc06")
+    implementation("cafe.adriel.voyager:voyager-navigator:1.0.0-rc06")
 
     implementation(Dependencies.DateTime.dateTime)
 }
 
 compose.desktop {
     application {
-        mainClass = "com.vanpra.composematerialdialogdemos.MainKt"
+        mainClass = "com.vanpra.composematerialdialogdemos.desktop.MainKt"
     }
 }

@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    namespace = "com.vanpra.composematerialdialogs.test.utils"
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false

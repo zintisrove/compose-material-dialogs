@@ -1,7 +1,7 @@
 plugins {
-    id("org.jetbrains.compose") version "1.3.0" apply false
+    id("org.jetbrains.compose") version "1.4.0" apply false
     //id("com.diffplug.spotless") version "6.0.4"
-    id("org.jetbrains.dokka") version "1.7.20"
+    id("org.jetbrains.dokka") version "1.8.10"
 }
 
 buildscript {
@@ -13,8 +13,8 @@ buildscript {
 
     dependencies {
         classpath(Dependencies.Kotlin.gradlePlugin)
-        classpath("com.android.tools.build:gradle:7.4.1")
-        classpath("com.vanniktech:gradle-maven-publish-plugin:0.24.0")
+        classpath("com.android.tools.build:gradle:7.4.2")
+        classpath("com.vanniktech:gradle-maven-publish-plugin:0.25.1")
         classpath(Dependencies.Shot.core)
     }
 }
@@ -60,14 +60,6 @@ subprojects {
             compileOptions {
                 sourceCompatibility(JavaVersion.VERSION_1_8)
                 targetCompatibility(JavaVersion.VERSION_1_8)
-            }
-            sourceSets {
-                named("main") {
-                    val altManifest = file("src/androidMain/AndroidManifest.xml")
-                    if (altManifest.exists()) {
-                        manifest.srcFile(altManifest.path)
-                    }
-                }
             }
         }
     }

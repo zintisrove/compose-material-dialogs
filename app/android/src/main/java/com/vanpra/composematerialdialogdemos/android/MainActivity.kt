@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -85,7 +87,7 @@ fun DialogDemos() {
 
         sections.forEach { dialogSection ->
             composable(dialogSection.title) {
-                Column {
+                Column(Modifier.verticalScroll(rememberScrollState())) {
                     dialogSection.content()
                 }
             }

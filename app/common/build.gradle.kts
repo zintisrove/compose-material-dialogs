@@ -68,7 +68,7 @@ kotlin {
                 api(Dependencies.AndroidX.Compose.animation)
             }
         }
-        val androidTest by getting
+        val androidUnitTest by getting
 
         val iosMain by creating {
             dependsOn(commonMain)
@@ -88,3 +88,6 @@ kotlin {
     }
 }
 
+android {
+    namespace = "com.vanpra.composematerialdialogs.app.common"
+}
