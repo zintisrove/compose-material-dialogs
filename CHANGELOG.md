@@ -1,5 +1,10 @@
 # Changelog
 
+### 0.9.3 - 2023-05-07
+- Update Compose Multiplatform to 1.4.0
+- Update kotlin to 1.8.20
+- Remove dependency on Accompanist and use Foundation Pager
+
 ### 0.9.2 - 2023-02-13
 - Update Compose Multiplatform to 1.3.0
 - Update kotlin to 1.8.0
