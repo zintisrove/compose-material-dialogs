@@ -79,7 +79,8 @@ internal actual fun Month.testLength(year: Int, isLeapYear: Boolean): Int {
 }
 
 internal actual operator fun DayOfWeek.plus(days: Long): DayOfWeek {
-    return DayOfWeek.values()[(ordinal + days % 7).toInt()]
+    val amount = (days % 7).toInt()
+    return DayOfWeek.values()[(ordinal + (amount + 7)) % 7]
 }
 
 internal actual fun DayOfWeek.getNarrowDisplayName(locale: Locale): String = getCalendar(locale).veryShortWeekdaySymbols()
