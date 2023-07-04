@@ -2,6 +2,7 @@ plugins {
     id("org.jetbrains.compose") version "1.4.0" apply false
     //id("com.diffplug.spotless") version "6.0.4"
     id("org.jetbrains.dokka") version "1.8.10"
+    id("maven-publish")
 }
 
 buildscript {
